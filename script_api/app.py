@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+import os
 
 # --- Page Config ---
 st.set_page_config(layout="wide")
@@ -8,7 +9,10 @@ st.set_page_config(layout="wide")
 # --- Load data ---
 @st.cache_data
 def load_data():
-    df = pd.read_csv("processed_data/aggregated_flight_data.csv", parse_dates=["Date", "Departure Full Time", "Arrival Full Time"])
+    # Construct path to the data file relative to the script's location
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    data_path = os.path.join(script_dir, "processed_data", "aggregated_flight_data.csv")
+    df = pd.read_csv(data_path, parse_dates=["Date", "Departure Full Time", "Arrival Full Time"])
     df['DateStr'] = df['Date'].dt.strftime('%Y-%m-%d')
     return df
 
