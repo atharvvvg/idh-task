@@ -3,3 +3,5 @@ chromedriver.exe
 initial_task.md
 todo.md
 architecture.md
+
+__pycache__

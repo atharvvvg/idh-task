@@ -12,7 +12,7 @@ def load_data():
     # Construct path to the data file relative to the script's location
     script_dir = os.path.dirname(os.path.abspath(__file__))
     data_path = os.path.join(script_dir, "processed_data", "aggregated_flight_data.csv")
-    df = pd.read_csv(data_path, parse_dates=["Date", "Departure Time", "Arrival Time"])
+    df = pd.read_csv(data_path, parse_dates=["Date", "Departure Time", "Arrival Time", "Departure Date", "Arrival Date"])
     df['DateStr'] = df['Date'].dt.strftime('%Y-%m-%d')
     return df
 
@@ -161,15 +161,21 @@ with st.expander("🔍 Show and Sort Raw Data Table", expanded=True):
     display_df = sorted_df.copy()
 
     # Format date and time columns
-    display_df['Date'] = display_df['Date'].dt.strftime('%d-%m-%Y')
+    display_df['Departure Date'] = display_df['Departure Date'].dt.strftime('%d-%m-%Y')
+    display_df['Arrival Date'] = display_df['Arrival Date'].dt.strftime('%d-%m-%Y')
     display_df['Departure Time'] = display_df['Departure Time'].dt.strftime('%H:%M:%S')
     display_df['Arrival Time'] = display_df['Arrival Time'].dt.strftime('%H:%M:%S')
     
     # Reorder and select columns for a cleaner view
+    # display_columns = [
+    #     'Flight Number', 'Airline Name', 'Date', 'Departure Time', 'Arrival Time',
+    #     'Base Fare', 'Tax', 'Total Fare', 'Time Block', 'Source City', 
+    #     'Destination City', 'Layover Type', 'Departure Hour', 'Arrival Hour'
+    # ]
     display_columns = [
-        'Flight Number', 'Airline Name', 'Date', 'Departure Time', 'Arrival Time',
-        'Base Fare', 'Tax', 'Total Fare', 'Time Block', 'Source City', 
-        'Destination City', 'Layover Type', 'Departure Hour', 'Arrival Hour'
+         'Flight Number', 'Airline Name', 'Source City', 
+         'Destination City', 'Departure Date', 'Departure Time', 'Arrival Date', 'Arrival Time',
+         'Base Fare', 'Tax', 'Total Fare', 'Time Block', 'Layover Type'
     ]
     
     # Filter out columns that might not exist in the dataframe
