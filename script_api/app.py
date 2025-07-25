@@ -148,10 +148,20 @@ with st.expander("🔍 Show and Sort Raw Data Table", expanded=True):
     # This part is more complex with altair selections; for now, we show the sidebar-filtered data
     # A full client-side cross-filter on the table would require more advanced callbacks.
     
+    # Reorder and select columns for a cleaner view
+    display_columns = [
+         'Flight Number', 'Airline Name', 'Source City', 
+         'Destination City', 'Departure Date', 'Departure Time', 'Arrival Date', 'Arrival Time',
+         'Base Fare', 'Tax', 'Total Fare', 'Time Block', 'Layover Type'
+    ]
+    
+    # Filter out columns that might not exist in the dataframe
+    existing_display_columns = [col for col in display_columns if col in filtered_df.columns]
+
     sort_column = st.selectbox(
         "Sort table by",
-        options=filtered_df.columns,
-        index=list(filtered_df.columns).index('Total Fare') # Default to Total Fare
+        options=existing_display_columns,
+        index=existing_display_columns.index('Total Fare') # Default to Total Fare
     )
     sort_ascending = st.toggle("Ascending", value=True)
     
@@ -165,21 +175,6 @@ with st.expander("🔍 Show and Sort Raw Data Table", expanded=True):
     display_df['Arrival Date'] = display_df['Arrival Date'].dt.strftime('%d-%m-%Y')
     display_df['Departure Time'] = display_df['Departure Time'].dt.strftime('%H:%M:%S')
     display_df['Arrival Time'] = display_df['Arrival Time'].dt.strftime('%H:%M:%S')
-    
-    # Reorder and select columns for a cleaner view
-    # display_columns = [
-    #     'Flight Number', 'Airline Name', 'Date', 'Departure Time', 'Arrival Time',
-    #     'Base Fare', 'Tax', 'Total Fare', 'Time Block', 'Source City', 
-    #     'Destination City', 'Layover Type', 'Departure Hour', 'Arrival Hour'
-    # ]
-    display_columns = [
-         'Flight Number', 'Airline Name', 'Source City', 
-         'Destination City', 'Departure Date', 'Departure Time', 'Arrival Date', 'Arrival Time',
-         'Base Fare', 'Tax', 'Total Fare', 'Time Block', 'Layover Type'
-    ]
-    
-    # Filter out columns that might not exist in the dataframe
-    existing_display_columns = [col for col in display_columns if col in display_df.columns]
     
     st.dataframe(display_df[existing_display_columns])
 
