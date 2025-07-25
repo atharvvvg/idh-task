@@ -1,0 +1,85 @@
+[
+    
+    {"api source": "https://rapidapi.com/farish978/api/flight-fare-search"},
+
+    
+    {
+        "status": 200,
+        "searchData": {
+            "from": "BOM",
+            "to": "DEL",
+            "date": "2025-08-01",
+            "type": "Economy",
+            "adult": 1,
+            "child": 0,
+            "infant": 0,
+            "currency": "INR",
+            "results": [
+            {
+                "id": "abc123xyz789",
+                "careerCode": "AI",
+                "flight_code": "AI-9485",
+                "flight_name": "Air India",
+                "stops": "Non-stop",
+                "cabinType": "Economy",
+                "baggage": {
+                    "cabin": {
+                    "qty": 1,
+                    "unit": "KG",
+                    "text": "7 KG",
+                    "allowance": 7
+                    },
+                    "checkIn": {
+                    "qty": "N",
+                    "unit": null,
+                    "text": "1 PIECE",
+                    "allowance": 1
+                    }
+                },
+                "refNumber": 1,
+                "currency": "INR",
+                "departureAirport": {
+                    "time": "2025-08-01T00:35:00",
+                    "code": "BOM",
+                    "tz": "Asia/Kolkata",
+                    "timeZone": "+5.5",
+                    "type": "1",
+                    "label": "Chhatrapati Shivaji Maharaj International Airport",
+                    "country": {
+                    "label": "India",
+                    "code": "IN"
+                    },
+                    "city": "Mumbai"
+                },
+                "arrivalAirport": {
+                    "time": "2025-08-01T02:55:00",
+                    "code": "DEL",
+                    "tz": "Asia/Kolkata",
+                    "timeZone": "+5.5",
+                    "type": "1",
+                    "label": "Indira Gandhi International Airport",
+                    "country": {
+                    "label": "India",
+                    "code": "IN"
+                    },
+                    "city": "New Delhi"
+                },
+                "path": ["AI-9485"],
+                "duration": {
+                    "text": "2h 20m",
+                    "value": 140
+                },
+                "stopSummary": [],
+                "totals": {
+                    "currency": "INR",
+                    "baggage": null,
+                    "penalty": null,
+                    "total": 5200.00,
+                    "tax": 723.03,
+                    "base": 4476.97
+                }
+            }
+        ]
+        }
+    }
+]

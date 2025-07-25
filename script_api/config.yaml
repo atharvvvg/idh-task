@@ -1,0 +1,23 @@
+# API Configuration
+api:
+  key: "dd513c892amsh09701d74b1991fcp11e008jsn1f079f499812"
+  host: "flight-fare-search.p.rapidapi.com"
+  base_url: "https://flight-fare-search.p.rapidapi.com/v2/flights"
+  delay_seconds: 10
+
+# Flight Route Configuration
+route:
+  from: "BOM"
+  to: "DEL"
+
+# Search Parameters
+search_params:
+  adult: 1
+  type: "economy"
+  currency: "INR"
+  num_days: 7 # Number of days to fetch data for
+
+# Output Configuration
+output:
+  directory: "output"
+  format: "xlsx" # "xlsx" / "csv"
