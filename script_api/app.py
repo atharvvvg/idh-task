@@ -12,7 +12,7 @@ def load_data():
     # Construct path to the data file relative to the script's location
     script_dir = os.path.dirname(os.path.abspath(__file__))
     data_path = os.path.join(script_dir, "processed_data", "aggregated_flight_data.csv")
-    df = pd.read_csv(data_path, parse_dates=["Date", "Departure Full Time", "Arrival Full Time"])
+    df = pd.read_csv(data_path, parse_dates=["Date", "Departure Time", "Arrival Time"])
     df['DateStr'] = df['Date'].dt.strftime('%Y-%m-%d')
     return df
 
@@ -129,10 +129,10 @@ with col2:
     
     # Scatter plot
     scatter_plot = alt.Chart(filtered_df).mark_circle(size=60).encode(
-        x='Departure Full Time:T',
+        x='Departure Time:T',
         y='Total Fare:Q',
         color='Airline Name:N',
-        tooltip=['Flight Number', 'Airline Name', 'Departure Full Time', 'Total Fare']
+        tooltip=['Flight Number', 'Airline Name', 'Departure Time', 'Total Fare']
     ).transform_filter(
         combined_filter
     ).properties(
@@ -156,5 +156,24 @@ with st.expander("🔍 Show and Sort Raw Data Table", expanded=True):
     sort_ascending = st.toggle("Ascending", value=True)
     
     sorted_df = filtered_df.sort_values(by=sort_column, ascending=sort_ascending)
-    st.dataframe(sorted_df)
+    
+    # --- Prepare and Format DataFrame for Display ---
+    display_df = sorted_df.copy()
+
+    # Format date and time columns
+    display_df['Date'] = display_df['Date'].dt.strftime('%d-%m-%Y')
+    display_df['Departure Time'] = display_df['Departure Time'].dt.strftime('%H:%M:%S')
+    display_df['Arrival Time'] = display_df['Arrival Time'].dt.strftime('%H:%M:%S')
+    
+    # Reorder and select columns for a cleaner view
+    display_columns = [
+        'Flight Number', 'Airline Name', 'Date', 'Departure Time', 'Arrival Time',
+        'Base Fare', 'Tax', 'Total Fare', 'Time Block', 'Source City', 
+        'Destination City', 'Layover Type', 'Departure Hour', 'Arrival Hour'
+    ]
+    
+    # Filter out columns that might not exist in the dataframe
+    existing_display_columns = [col for col in display_columns if col in display_df.columns]
+    
+    st.dataframe(display_df[existing_display_columns])
 
