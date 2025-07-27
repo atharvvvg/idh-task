@@ -137,7 +137,7 @@ def main():
     
     # Get start date (time delta can be set manually) in yyyy-mm-dd format
     start_date = (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d')
-    
+
     # Fetch data for specified number of days
     num_days = fetcher.config['search_params']['num_days']
     

@@ -20,6 +20,54 @@ Air India,2025-08-06,Morning,5301.675,14
 Air India,2025-08-07,Afternoon,5937.875999999999,5
 Air India,2025-08-07,Evening,6968.75725,6
 Air India,2025-08-07,Morning,5443.053,14
+Air India,2025-08-08,Afternoon,7168.2345000000005,5
+Air India,2025-08-08,Evening,11947.0575,6
+Air India,2025-08-08,Morning,6198.526384615384,13
+Air India,2025-08-09,Afternoon,5635.7154,5
+Air India,2025-08-09,Evening,5221.6880625,8
+Air India,2025-08-09,Morning,6391.3815,14
+Air India,2025-08-11,Afternoon,6179.5125,5
+Air India,2025-08-11,Evening,5561.56125,8
+Air India,2025-08-11,Morning,6020.61075,14
+Air India,2025-08-12,Afternoon,5190.7905,5
+Air India,2025-08-12,Evening,5579.217,7
+Air India,2025-08-12,Morning,5228.818269230769,13
+Air India,2025-08-13,Afternoon,5685.1515,5
+Air India,2025-08-13,Evening,6002.955,7
+Air India,2025-08-13,Morning,5332.0365,14
+Air India,2025-08-14,Afternoon,6377.2569,5
+Air India,2025-08-14,Evening,9228.072,6
+Air India,2025-08-14,Morning,5579.217,14
+Air India,2025-08-16,Afternoon,5240.2266,5
+Air India,2025-08-16,Evening,5716.0490625,8
+Air India,2025-08-16,Morning,5543.9055,14
+Air India,2025-08-17,Afternoon,7069.362300000001,5
+Air India,2025-08-17,Evening,7508.1076875,8
+Air India,2025-08-17,Morning,5913.318115384615,13
+Air India,2025-08-18,Afternoon,6179.5125,5
+Air India,2025-08-18,Evening,5623.356375,8
+Air India,2025-08-18,Morning,6126.54525,14
+Air India,2025-08-19,Afternoon,5190.7905,5
+Air India,2025-08-19,Evening,5543.9055,7
+Air India,2025-08-19,Morning,5304.873807692308,13
+Air India,2025-08-20,Afternoon,5289.6627,5
+Air India,2025-08-20,Evening,5543.9055,7
+Air India,2025-08-20,Morning,5402.659500000001,14
+Air India,2025-08-21,Afternoon,5240.2266,5
+Air India,2025-08-21,Evening,5685.1515,6
+Air India,2025-08-21,Morning,5402.659500000001,14
+Air India,2025-08-22,Afternoon,5339.0988,5
+Air India,2025-08-22,Evening,7168.2345,6
+Air India,2025-08-22,Morning,5495.012653846154,13
+Air India,2025-08-23,Afternoon,5240.2266,5
+Air India,2025-08-23,Evening,5407.0734375,8
+Air India,2025-08-23,Morning,5526.24975,14
+Air India,2025-08-24,Afternoon,5388.534900000001,5
+Air India,2025-08-24,Evening,6272.2051875,8
+Air India,2025-08-24,Morning,5171.776615384616,13
+Air India,2025-08-25,Afternoon,5190.7905,5
+Air India,2025-08-25,Evening,5468.8685625,8
+Air India,2025-08-25,Morning,5738.118750000001,14
 Air India Express,2025-08-01,Morning,5592.984369,1
 Air India Express,2025-08-02,Morning,5592.984369,2
 Air India Express,2025-08-03,Morning,5592.984369,1
@@ -27,6 +75,24 @@ Air India Express,2025-08-04,Morning,5592.984369,2
 Air India Express,2025-08-05,Morning,5592.509643,2
 Air India Express,2025-08-06,Morning,5592.984369,2
 Air India Express,2025-08-07,Morning,5592.984369,2
+Air India Express,2025-08-08,Morning,5683.9155975,1
+Air India Express,2025-08-09,Morning,6632.841537,2
+Air India Express,2025-08-10,Morning,6394.065174000001,1
+Air India Express,2025-08-11,Morning,5587.762383,2
+Air India Express,2025-08-12,Morning,6394.065174000001,2
+Air India Express,2025-08-13,Morning,6208.6797990000005,2
+Air India Express,2025-08-14,Morning,5990.9137785,2
+Air India Express,2025-08-15,Morning,6394.065174000001,1
+Air India Express,2025-08-16,Morning,5990.9137785,2
+Air India Express,2025-08-17,Morning,6394.065174000001,1
+Air India Express,2025-08-18,Morning,7162.796529,2
+Air India Express,2025-08-19,Morning,5587.762383,2
+Air India Express,2025-08-20,Morning,5587.762383,2
+Air India Express,2025-08-21,Morning,5587.762383,2
+Air India Express,2025-08-22,Morning,5587.762383,1
+Air India Express,2025-08-23,Morning,5587.762383,2
+Air India Express,2025-08-24,Morning,5587.762383,1
+Air India Express,2025-08-25,Morning,5587.762383,2
 China United Airlines,2025-08-01,Evening,10638.6945,1
 China United Airlines,2025-08-02,Evening,10638.6945,1
 China United Airlines,2025-08-03,Evening,10638.6945,1
@@ -34,6 +100,22 @@ China United Airlines,2025-08-04,Evening,10638.6945,1
 China United Airlines,2025-08-05,Evening,10637.7915,1
 China United Airlines,2025-08-06,Evening,10638.6945,1
 China United Airlines,2025-08-07,Evening,10638.6945,1
+China United Airlines,2025-08-08,Evening,15325.191,1
+China United Airlines,2025-08-09,Evening,10628.761499999999,1
+China United Airlines,2025-08-11,Evening,10628.761499999999,1
+China United Airlines,2025-08-12,Evening,10628.761499999999,1
+China United Airlines,2025-08-13,Evening,10628.761499999999,1
+China United Airlines,2025-08-14,Evening,14830.83,1
+China United Airlines,2025-08-16,Evening,10381.581,1
+China United Airlines,2025-08-17,Evening,13347.747,1
+China United Airlines,2025-08-18,Evening,10628.761499999999,1
+China United Airlines,2025-08-19,Evening,10628.761499999999,1
+China United Airlines,2025-08-20,Evening,10628.761499999999,1
+China United Airlines,2025-08-21,Evening,10628.761499999999,1
+China United Airlines,2025-08-22,Evening,10628.761499999999,1
+China United Airlines,2025-08-23,Evening,10628.761499999999,1
+China United Airlines,2025-08-24,Evening,10628.761499999999,1
+China United Airlines,2025-08-25,Evening,10628.761499999999,1
 Indigo,2025-08-01,Afternoon,5685.516269999998,5
 Indigo,2025-08-01,Evening,9111.8121,7
 Indigo,2025-08-01,Morning,5930.807099999999,7
@@ -55,3 +137,57 @@ Indigo,2025-08-06,Morning,6015.633899999999,7
 Indigo,2025-08-07,Afternoon,7075.9689,5
 Indigo,2025-08-07,Evening,7422.344999999999,7
 Indigo,2025-08-07,Morning,7210.277999999999,7
+Indigo,2025-08-08,Afternoon,7672.48272,5
+Indigo,2025-08-08,Evening,12419.05455,7
+Indigo,2025-08-08,Morning,6783.33915,7
+Indigo,2025-08-09,Afternoon,6866.67429,5
+Indigo,2025-08-09,Evening,5798.148300000002,7
+Indigo,2025-08-09,Morning,7069.3623,7
+Indigo,2025-08-10,Afternoon,6965.546489999999,5
+Indigo,2025-08-10,Evening,6846.89985,7
+Indigo,2025-08-10,Morning,5865.2401500000005,7
+Indigo,2025-08-11,Afternoon,6965.546489999999,5
+Indigo,2025-08-11,Evening,6645.6243,7
+Indigo,2025-08-11,Morning,6352.53885,7
+Indigo,2025-08-12,Afternoon,6179.512500000002,5
+Indigo,2025-08-12,Evening,6645.6243,7
+Indigo,2025-08-12,Morning,6221.886300000001,7
+Indigo,2025-08-13,Afternoon,5882.895900000001,5
+Indigo,2025-08-13,Evening,7069.3623,7
+Indigo,2025-08-13,Morning,5798.148300000002,7
+Indigo,2025-08-14,Afternoon,7069.362299999999,5
+Indigo,2025-08-14,Evening,10957.15845,7
+Indigo,2025-08-14,Morning,6433.7553,7
+Indigo,2025-08-15,Afternoon,7069.362299999999,5
+Indigo,2025-08-15,Evening,6772.7456999999995,7
+Indigo,2025-08-15,Morning,7069.3623,7
+Indigo,2025-08-16,Afternoon,6476.1291,5
+Indigo,2025-08-16,Evening,6010.017300000001,7
+Indigo,2025-08-16,Morning,6221.886300000001,7
+Indigo,2025-08-17,Afternoon,7885.057949999999,5
+Indigo,2025-08-17,Evening,9950.7807,7
+Indigo,2025-08-17,Morning,5999.42385,7
+Indigo,2025-08-18,Afternoon,6965.546489999999,5
+Indigo,2025-08-18,Evening,6857.4933,7
+Indigo,2025-08-18,Morning,6995.2081499999995,7
+Indigo,2025-08-19,Afternoon,6179.512500000002,5
+Indigo,2025-08-19,Evening,6645.6243,7
+Indigo,2025-08-19,Morning,6221.886300000001,7
+Indigo,2025-08-20,Afternoon,6179.512500000002,5
+Indigo,2025-08-20,Evening,6645.6243,7
+Indigo,2025-08-20,Morning,6010.017300000001,7
+Indigo,2025-08-21,Afternoon,7069.362299999999,5
+Indigo,2025-08-21,Evening,7069.3623,7
+Indigo,2025-08-21,Morning,6221.886300000001,7
+Indigo,2025-08-22,Afternoon,6476.1291,5
+Indigo,2025-08-22,Evening,6921.053999999999,7
+Indigo,2025-08-22,Morning,5798.148300000002,7
+Indigo,2025-08-23,Afternoon,6476.1291,5
+Indigo,2025-08-23,Evening,6645.6243,7
+Indigo,2025-08-23,Morning,6433.7553,7
+Indigo,2025-08-24,Afternoon,7069.362299999999,5
+Indigo,2025-08-24,Evening,6772.7456999999995,7
+Indigo,2025-08-24,Morning,5586.279300000002,7
+Indigo,2025-08-25,Afternoon,6075.696690000002,5
+Indigo,2025-08-25,Evening,5798.148300000002,7
+Indigo,2025-08-25,Morning,6137.1387,7
