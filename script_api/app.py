@@ -23,7 +23,7 @@ st.sidebar.title("Filters")
 
 # Multi-select for dates
 all_dates = sorted(df["DateStr"].unique())
-selected_dates = st.sidebar.multiselect("Select Date(s)", all_dates, default=all_dates[:3]) # Default to first 3 dates
+selected_dates = st.sidebar.multiselect("Select Date(s)", all_dates)
 
 # Multi-select for airlines
 all_airlines = ["All"] + sorted(df["Airline Name"].unique())

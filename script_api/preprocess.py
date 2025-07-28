@@ -21,7 +21,7 @@ def classify_time_block(dep_hour):
 for file in all_files:
     df = pd.read_excel(file)
 
-    # Parse datetime columns (don't overwrite)
+    # Parse datetime columns
     df['Departure Date'] = pd.to_datetime(df['Departure Time']).dt.date
     df['Departure Full Time'] = pd.to_datetime(df['Departure Time']).dt.time
     df['Departure Hour'] = pd.to_datetime(df['Departure Time']).dt.hour
