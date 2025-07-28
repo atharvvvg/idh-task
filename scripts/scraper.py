@@ -6,17 +6,17 @@ from datetime import datetime, timedelta
 import pandas as pd
 from playwright.sync_api import sync_playwright
 
-# Configurable parameters - easily changeable for different routes/dates
+# Configurable parameters
 default_config = {
     'source_city': 'Mumbai',
     'destination_city': 'Delhi',
     'source_airport': 'BOM',
     'destination_airport': 'DEL',
-    'days_to_scrape': 7,  # Changed from 7 to 30 for month-long data
+    'days_to_scrape': 7, 
     'output_dir': os.path.abspath(os.path.join(os.path.dirname(__file__), '../data/raw')),
-    'headless': False,  # Set to True for full automation, False for manual CAPTCHA
-    'delay_min': 15,    # Increased minimum delay
-    'delay_max': 30,    # Increased maximum delay
+    'headless': False,  # True for full automation, False for manual CAPTCHA
+    'delay_min': 15,    
+    'delay_max': 30,  
 }
 
 # Helper to get target dates
@@ -70,9 +70,8 @@ def scrape_flights_for_date(playwright, config, dep_date_obj):
     try:
         # Navigate to page with longer timeout
         page.goto(url, wait_until='domcontentloaded', timeout=90000)
-        time.sleep(random.uniform(5, 8))  # Wait for page to load
+        time.sleep(random.uniform(5, 8))
         
-        # Check for network problem and handle it
         if page.locator('text=NETWORK PROBLEM').is_visible():
             print("  ⚠️ Network problem detected, trying refresh...")
             try:
@@ -82,17 +81,15 @@ def scrape_flights_for_date(playwright, config, dep_date_obj):
                 page.reload(wait_until='domcontentloaded')
                 time.sleep(random.uniform(5, 8))
         
-        # Check again after refresh
         if page.locator('text=NETWORK PROBLEM').is_visible():
             print("  ❌ Still getting network problem, skipping this date")
             context.close()
             browser.close()
             return []
 
-        # Handle Flight Comparison popup - more robust approach
         print("  Handling popups...")
         try:
-            # Wait for popup and click GOT IT
+            # to close "GOT IT" popup
             popup_button = page.locator('button:has-text("GOT IT")')
             if popup_button.is_visible(timeout=5000):
                 popup_button.click()
@@ -100,8 +97,6 @@ def scrape_flights_for_date(playwright, config, dep_date_obj):
                 time.sleep(2)
         except Exception:
             print("  No Flight Comparison popup found")
-
-        # Handle other common popups
         try:
             close_modal = page.locator('button[data-cy="closeModal"]')
             if close_modal.is_visible(timeout=3000):
@@ -110,39 +105,34 @@ def scrape_flights_for_date(playwright, config, dep_date_obj):
         except Exception:
             pass
 
-        # Wait for flight results to load - updated selector
         print("  Waiting for flight results...")
         try:
-            # Wait for the listing container - using the correct structure
             page.wait_for_selector('div.listingCard, div.timingOptionOuter', timeout=45000)
             time.sleep(random.uniform(3, 5))
         except Exception as e:
-            print(f"  ❌ Timeout waiting for flight results: {e}")
+            print(f"Timeout waiting for flight results: {e}")
             context.close()
             browser.close()
             return []
 
-        # Extract flight data using CORRECT selectors based on user's HTML
         flights = []
         
-        # Try to find flight cards using the correct selector
         cards = page.query_selector_all('div.listingCard')
         if not cards:
-            # Alternative: look for timing option containers
             cards = page.query_selector_all('div.timingOptionOuter')
         
         print(f"  Found {len(cards)} flight cards")
         
         if len(cards) == 0:
-            print("  ⚠️ No flight cards found with current selectors")
-            print("  Page title:", page.title())
+            print("No flight cards found with current selectors")
+            print("Page title:", page.title())
             context.close()
             browser.close()
             return []
         
         for i, card in enumerate(cards):
             try:
-                # Extract airline name - based on your HTML: p.airlineName
+                # Extract airline name
                 airline = None
                 try:
                     airline_elem = card.query_selector('p.airlineName, .airlineName')
@@ -151,7 +141,7 @@ def scrape_flights_for_date(playwright, config, dep_date_obj):
                 except:
                     pass
                 
-                # Extract flight number - based on your HTML: p.fliCode
+                # Extract flight number
                 flight_number = None
                 try:
                     flight_elem = card.query_selector('p.fliCode, .fliCode')
@@ -160,7 +150,7 @@ def scrape_flights_for_date(playwright, config, dep_date_obj):
                 except:
                     pass
 
-                # Extract departure time - based on your HTML: .timeInfoLeft .flightTimeInfo span
+                # Extract departure time
                 dep_time = None
                 try:
                     dep_elem = card.query_selector('.timeInfoLeft .flightTimeInfo span, .timeInfoLeft span')
@@ -169,7 +159,7 @@ def scrape_flights_for_date(playwright, config, dep_date_obj):
                 except:
                     pass
 
-                # Extract arrival time - based on your HTML: .timeInfoRight .flightTimeInfo span
+                # Extract arrival time
                 arr_time = None
                 try:
                     arr_elem = card.query_selector('.timeInfoRight .flightTimeInfo span, .timeInfoRight span')
@@ -178,8 +168,8 @@ def scrape_flights_for_date(playwright, config, dep_date_obj):
                 except:
                     pass
 
-                # Extract layover info - based on your HTML: p.flightsLayoverInfo
-                layover = "non-stop"  # default
+                # Extract layover info
+                layover = "non-stop"
                 try:
                     layover_elem = card.query_selector('p.flightsLayoverInfo, .flightsLayoverInfo')
                     if layover_elem:
@@ -187,10 +177,10 @@ def scrape_flights_for_date(playwright, config, dep_date_obj):
                 except:
                     pass
 
-                # Extract fare - using multiple selectors including the one you provided
+                # Extract fare
                 total_fare = None
                 fare_selectors = [
-                    'span.fontSize18.blackFont',  # Your provided selector
+                    'span.fontSize18.blackFont',
                     '.fontSize18.blackFont',
                     'div.blackText.fontSize18.blackFont.white-space-no-wrap',
                     '.price',
@@ -227,9 +217,9 @@ def scrape_flights_for_date(playwright, config, dep_date_obj):
                         'Layover': layover,
                         'Airline_Name': airline
                     })
-                    print(f"    ✓ Extracted: {flight_number or 'N/A'} | {airline} | {dep_time}-{arr_time} | ₹{total_fare}")
+                    print(f"Extracted: {flight_number or 'N/A'} | {airline} | {dep_time}-{arr_time} | ₹{total_fare}")
                 else:
-                    print(f"    ⚠️ Missing essential data for flight {i+1} (airline: {airline}, fare: {total_fare})")
+                    print(f"Missing essential data for flight {i+1} (airline: {airline}, fare: {total_fare})")
                     
                     # Debug missing data
                     if not airline:
@@ -238,11 +228,11 @@ def scrape_flights_for_date(playwright, config, dep_date_obj):
                         print(f"      Missing fare - tried multiple fare selectors")
                     
             except Exception as e:
-                print(f"    ❌ Error extracting flight {i+1}: {e}")
+                print(f"Error extracting flight {i+1}: {e}")
                 continue
                 
     except Exception as e:
-        print(f"  ❌ Error loading page: {e}")
+        print(f"Error loading page: {e}")
         context.close()
         browser.close()
         return []
@@ -291,7 +281,7 @@ def main(config=None):
                 continue
             
             # Throttle to avoid anti-bot measures
-            if i < len(dates):  # Don't wait after the last iteration
+            if i < len(dates): 
                 wait_time = random.uniform(config['delay_min'], config['delay_max'])
                 print(f"  Waiting {wait_time:.1f}s before next request...")
                 time.sleep(wait_time)
