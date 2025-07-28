@@ -521,8 +521,7 @@ if not daily_stats_df.empty:
 else:
     st.warning("No data available for denoising analysis with current filters.")
 
-
-# --- Workflow/Data Pipeline ---
 st.subheader("Workflow/Data Pipeline")
-st.image("flow.png")
-
+script_dir = os.path.dirname(os.path.abspath(__file__))
+image_path = os.path.join(script_dir, "flow.png")
+st.image(image_path)
