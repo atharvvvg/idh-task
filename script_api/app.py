@@ -351,11 +351,6 @@ if selected_denoising_methods:
 else:
     st.info("👈 Please select at least one denoising method from the sidebar to view comparison charts.")
 
-
-# --- NEW SECTION: Denoising Analysis ---
-st.subheader("🔬 Monthly Fare Denoising Analysis")
-st.caption("Comparing different statistical methods to reduce noise in daily fare data")
-
 # Import required libraries for denoising
 import holidays
 from scipy import stats
@@ -437,57 +432,13 @@ if not daily_stats_df.empty:
         var_name='Method',
         value_name='Average Fare'
     )
-    
-    # Create the comparison chart with consistent colors
-    denoising_chart = alt.Chart(plot_data).mark_line(
-        point=True, 
-        strokeWidth=3,
-        opacity=0.9
-    ).encode(
-        x=alt.X('Date:O', title='Date', axis=alt.Axis(labelAngle=-45)),
-        y=alt.Y('Average Fare:Q', title='Average Fare (₹)'),
-        color=alt.Color('Method:N', 
-                       scale=alt.Scale(
-                           domain=['Raw Mean', 'Filtered Mean', 'Median', 'Trimmed Mean (10%)'],
-                           range=['#e74c3c', '#3498db', '#2ecc71', '#f39c12']  # Red, Blue, Green, Orange
-                       ),
-                       legend=alt.Legend(title="Denoising Method", orient="top")),
-        tooltip=['Date:O', 'Method:N', 'Average Fare:Q', 'Flight Count:Q']
-    ).properties(
-        title='Daily Average Fare: Raw vs. Denoised Methods (All Methods)',
-        height=400
-    )
-    
-    st.altair_chart(denoising_chart, use_container_width=True)
-    
-    # Calculate and display monthly summary statistics
-    st.subheader("📈 Monthly Summary Statistics")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.write("**Overall Monthly Averages:**")
-        monthly_averages = {
-            'Raw Mean': daily_stats_df['Raw Mean'].mean(),
-            'Filtered Mean': daily_stats_df['Filtered Mean'].mean(),
-            'Median': daily_stats_df['Median'].mean(),
-            'Trimmed Mean (10%)': daily_stats_df['Trimmed Mean (10%)'].mean()
-        }
-        
-        for method, avg_fare in monthly_averages.items():
-            st.metric(f"{method}", f"₹{avg_fare:,.0f}")
-    
-    with col2:
-        st.write("**Variability Analysis (Standard Deviation):**")
-        variability = {
-            'Raw Mean': daily_stats_df['Raw Mean'].std(),
-            'Filtered Mean': daily_stats_df['Filtered Mean'].std(),
-            'Median': daily_stats_df['Median'].std(),
-            'Trimmed Mean (10%)': daily_stats_df['Trimmed Mean (10%)'].std()
-        }
-        
-        for method, std_fare in variability.items():
-            st.metric(f"{method}", f"₹{std_fare:.0f}")
+
+    variability = {
+        'Raw Mean': daily_stats_df['Raw Mean'].std(),
+        'Filtered Mean': daily_stats_df['Filtered Mean'].std(),
+        'Median': daily_stats_df['Median'].std(),
+        'Trimmed Mean (10%)': daily_stats_df['Trimmed Mean (10%)'].std()
+    }
     
     # Method recommendation
     st.subheader("💡 Method Recommendation")

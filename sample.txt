@@ -1,0 +1,7 @@
+insert into flight_data ( Flight Number,	Airline Name	Source City	Destination City	Source Airport Code	Destination Airport Code	Date	Departure Time	Arrival Time	Base Fare	Layover Type	Departure Date	Departure Full Time	Departure Hour	Arrival Date	Arrival Full Time	Arrival Hour	Tax	Total Fare	Time Block
+) values ("AI1234", "Air India",  )
+
+
+desc flight_data;
+
+create index s.no on flight_data ("Flight Number", "Departure Time")
